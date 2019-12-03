@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var abb = [];
+		var arr = [5, 6, 8, 2, 4, 656, 18, 2, 1, 5, 1, 4, 0, 4, 22];
+		for (var i = 0, len = arr.length; i < len; i++) {
+			if (abb.indexOf(arr[i]) == -1) {
+				abb.push(arr[i]);
+			}
+		}
+
+		document.write(abb + "<br />");
+
+		var num = 0;
+		for (var x = 0; x < abb.length; x++) {
+			for (var y = x + 1; y < abb.length; y++) {
+				if (abb[x] > abb[y]) {
+					num = abb[x];
+					abb[x] = abb[y];
+					abb[y] = num;
+				}
+			}
+		}
+
+		document.write(abb);
+		var arr = [5, 6];
+		console.log(typeof arr)
+		console.log(arr instanceof Array)
+		var a = "50";
+		var b = "50m";
+		console.log(a - b)
+		console.log(a + b)
+		console.log(a * b)
+	</script>
+</body>
+
+</html>

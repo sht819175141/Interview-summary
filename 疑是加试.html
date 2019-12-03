@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+/*//2、写出兼容DOM0和DOM2的事件处理程序
+‍		function addHandler(elem,type,fn){
+	  	 	if(elem.addEventListener){   	//DOM2
+	  	 	 	elem.addEventListener(type,fn,false);	
+	  	 	}else{						//DOM0
+	  	 		elem["on"+type]=fn;
+	  	 	}
+	  	} 
+	  	var btn=document.getElementById('btn');
+	  	addHandler(btn,'click',function(){alert('你好')})
+//3、写出兼容的阻止冒泡 ，写出兼容的阻止默认行为 
+	function  stopPropagation(eve){
+		if(eve.stopPropagation){  //DOM
+            eve.stopPropagation();
+        }else{  //IE
+            eve.cancelBubble=true;
+        }
+ 	}
+
+	function preventDefault(eve){
+		if(eve.preventDefault){
+			eve.preventDefault();
+		}else{
+			eve.returnValue=false;
+		}
+	}
+/*4、封装方法：
+	addClass(obj,clsName)   
+	removeClass(obj,clsName）　 
+	hasClass(obj,clsName)    
+	getByClass（parent,clsName）                                                    
+  用正则写。*/
+//判断文件单中是否具有某一样是  
+
+/*	function hasClass(elem,name){
+		var reg=new RegExp("\\b"+name+"\\b");
+		//return reg.test(elem.className);
+		return obj.className.match(reg)
+	}
+	//console.log(hasClass(box,"bg"));
+	
+	//删除文件当中的某个样式
+	function removeClass(elem,className){
+	 	var reg=new RegExp("\\b"+className+"\\b")
+	 	if(hasClass(elem,className)){
+	 		elem.className=elem.className.replace(reg," ");
+	 	}
+	 }
+	 //console.log(removeClass(box,"bg"));
+
+	//三、向文件里追加某一样式的方法,已有样式的话，就不再添加
+	function addClass(elem,className){
+		if(hasClass(elem,className==null)){
+			elem.className=elem.className+" "+className;
+		}
+	}
+	
+	//四、遍历所有的标签，然后className是否你要找的bg 有push数组
+	function getElementsByClassName(obj,className){
+		var elem=document.getElementsByTagName("obj)
+		var arr=[];
+		for(var i=0;i<elem.length;i++){
+			if(hasClass(elem[i],className)){
+				arr.push(elem[i])
+			}
+		}
+		return arr;
+	}*/
+	//console.log(getElementsByClassName(box,"bg"))
+//5、闭包实现单击li出现对应的下标
+	
+//6、正则写驼峰规则 
+	/*var arr="border-left-color"
+	var reg=/-\w/g;
+	arr.replace(reg,function(val){
+		return val.substring(1).toUpperCase();
+	})*/
+
+//  1） 生成对象：
+//     json={
+//        user:"admin",
+// 		  pwd:2,
+// 		  sex:"男"
+// 	   } 
+
+// 2） 传参数user,获取值admin .传参数pwd ,获取值 2
+		var url='http://www.baidu.com/?user=admin&pwd=2&sex=男'; 
+		var reg=/(\?|&)\w+=[\w\u4e00-\u9f1a5]+/g;
+		var arr=url.match(reg);
+		for(var i=0;i<arr.length;i++){
+			arr[i]=arr[i].substring(1)
+		}
+		var json={};
+		for(var j=0;j<arr.length;j++){
+			var a=arr[j].split("=");
+			json[a[0]]=a[1];
+		}
+	
+//封装函数  getURL(name)																															
+/*var url='http://www.baidu.com?user=张三&city=北京&p_id=18';
+var url='http://www.baidu.com/?user=admin&pwd=2&sex=男';*/ 
+//7、正则 http://www.baidu.com/?user=admin&pwd=2&sex=男 
+
+	function getString(name){
+		var url="http://www.baidu.com/?user=admin&pwd=2&sex=男"
+	    var reg=new RegExp("(\\?|&)"+name+"=[\\w\\u4e00-\\u9fa5]+","g");
+	    var arr=url.match(reg);
+	    var index=arr[0].indexOf("=");
+	    	return arr[0].substring(index+1);
+	}  
+	console.log(getString('user'));
+
+
+//
+	function show(obj,attr){
+		if(obj.currentStyle){
+			obj.currentStyle[attr];               //非IE浏览器行内样式
+		}else{
+			getComputedStyle(obj,null)[attr];    //标准浏览器行内样式
+		}
+	}	
+
+	function  getByClass(parent,clsName){
+			var  oElemes=parent.getElementsByTagName('*');
+			var arr=[]
+			for(var i=0;i<oElemes.length;i++){
+				if(oElemes[i].className=='box'){
+					arr.push(oElemes[i])
+				}
+			}
+			return  arr
+		}     
+	</script>
+</body>
+</html>0 

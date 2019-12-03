@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var num = prompt("请输入数字");
+		var sum = 0;
+		if (isNaN(num) || num.length == 0) {
+			alert("格式不正确，请输入数字");
+		} else if (num >= 1) {
+			for (var i = 1; i <= num; i++) {
+				sum += i
+			}
+			alert(sum)
+		} else {
+			alert("请输入正值数")
+		}
+
+		/*var m=1;
+		/*while(m<=100){
+			document.write(m);
+			m++
+		}*/
+		/*do{
+			document.write(m+"<br/>");
+			m++;
+		}while(m<=100);*/
+	</script>
+</body>
+
+</html>

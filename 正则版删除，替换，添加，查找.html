@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div class="e bg km kk" id="box"></div>
+	<script>
+	var box=document.getElementById("box");
+
+	//判断文件单中是否具有某一样是  
+
+	function hasClass(elem,name){
+		var reg=new RegExp("\\b"+name+"\\b");
+		return reg.test(elem.className);
+	}
+	//console.log(hasClass(box,"bg"));
+	
+	//删除文件当中的某个样式
+	function removeClass(elem,className){
+	 	var reg=new RegExp("\\b"+className+"\\b")
+	 	if(hasClass(elem,className)){
+	 		elem.className=elem.className.replace(reg," ");
+	 	}
+	 }
+	 //console.log(removeClass(box,"bg"));
+
+	//三、向文件里追加某一样式的方法,已有样式的话，就不再添加
+	function addClass(elem,className){
+		if(hasClass(elem,className==null)){
+			elem.className=elem.className+" "+className;
+		}
+	}
+	
+	//四、遍历所有的标签，然后className是否你要找的bg 有push数组
+	function getElementsByClassName(elem,className){
+		var arr=[];
+		for(var i=0;i<elem.length;i++){
+			if(hasClass(elem[i],className)){
+				arr.push(elem[i])
+			}
+		}
+		return arr;
+	}
+	//console.log(getElementsByClassName(box,"bg"))
+	</script>
+</body>
+</html>

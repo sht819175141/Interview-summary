@@ -1,0 +1,296 @@
+   <!doctype html>
+   <html lang="en">
+   <head>
+   	<meta charset="UTF-8">
+   	<title>Document</title>
+   </head>
+   <body>
+   		1.一个表格标签包含哪些子标签
+   			table> 标签定义 HTML 表格。
+			简单的 HTML 表格由 table 元素以及一个或多个 tr、th 或 td 元素组成。
+			tr 元素定义表格行，th 元素定义表头，td 元素定义表格单元。
+			更复杂的 HTML 表格也可能包括 caption、col、colgroup、thead、tfoot 以及 tbody 元素。
+
+		2.如何将一个图片作为背景放置在div的右下角
+			#container{backtround:url(图片地址.gif) no-repeat right bottom}
+
+		3.浏览器的渲染规则
+
+		4.说出几个常用事件，并说出他们的作用
+			(1)单击事件:onclick
+			（2）改变事件:onchange
+			（3）失去焦点事件:onblur
+			（4）获得焦点事件:onfocus
+			（5）onKeyDown 当键盘上某个按键被按下时触发的事件[注意:页面内必须有被聚焦的对象] 
+			（6）onKeyUp 当键盘上某个按键被按放开时触发的事件[注意:页面内必须有被聚焦的对象] 
+
+		6.如何计算页面从按钮点击到加载完成所花的时间
+			<script type="text/javascript">
+				var time1;var time2;
+				function loadTime(){
+					time1=(new Date()).getTime();
+				}
+				function clickTime(){
+					time2=(new Date()).getTime();
+					alert("从开始到现在一共是"+（time2-time1）+"ms");
+				}
+			</script>
+			<body onload="loadTime()">
+				<input type="button" value="点击" onclick="clickTime()"/>
+			</body>
+			这个计算出来是以毫秒为单位的。你再转换成时分秒制吧
+
+		7.什么叫冒泡
+			在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
+
+		8.如何在js中做继承
+			1、原型链继承；核心： 将父类的实例作为子类的原型
+			2、构造继承；核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）
+			3、实例继承；核心：为父类实例添加新特性，作为子类实例返回
+			4、拷贝继承
+			5、组合继承；核心：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
+			6、寄生组合继承；核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点
+
+		9.如何判断一个对象是不是function
+			用 typeof  来判断如 
+			var  fn=function(){
+				alert();
+			}
+			if  (typeof( fn )==function){
+				alert('is function');
+			}
+
+		10.get和post方式的差异
+			one:get方式的安全性较post方式要差一些，所以，包含一些重要的信息的话，简易使用post数据提交方式；
+			two:在做查询统计的时候，使用get方式要更好一些；而在做数据的添加，修改或删除操作时，建议使用post数据提交方式；
+
+		11.jquery如何做循环遍历一个数组对象
+				<div id="result" style="font-size:16px;color:red;"></div>
+			    <table cellpadding=5 cellspacing=1 width=620 id="project" border="1" >
+		            <tr>
+		                <th>用户名</th>
+		                <th>密码</th>              
+		            </tr>             
+			     </table>
+
+			   var obj =[{"name":"项海军","password":"123456"}];
+			   $("#result").html("------------遍历对象 .each的使用-------------");
+			      alert(obj);//是个object元素
+			   //下面使用each进行遍历
+			   $.each(obj,function(n,value) { 
+			           alert(n+' '+value);
+			           var trs = "";
+			             trs += "<tr><td>" + value.name +"</td> <td>" + value.password +"</td></tr>";
+			             tbody += trs;       
+			           });
+
+			         $("#project").append(tbody);
+			  });
+
+
+			      $(function(){
+			       var tbody = "";
+			     //------------遍历数组 .each的使用-------------
+			           var anArray = ['one','two','three'];
+			    	 $("#result").html("------------遍历数组 .each的使用-------------");
+			           $.each(anArray,function(n,value) {
+			            alert(n+' '+value);
+			           	var trs = "";
+			             trs += "<tr><td>" +value+"</td></tr>";
+			              tbody += trs;
+			            });
+			          $("#project").append(tbody);
+			  });
+
+		12.如何便利得到一个对象的所有子对象
+			var obj = {a:1,b:2,c:3}
+			for(var s in obj){
+				alert(obj[s]);///////1,2,3
+			}
+
+		13.function test(){
+				var a=1;
+				alert(a)//1
+				alert(b)//undefined
+				alert(c)//c is not defined
+				var b=2;
+				c=3
+			}
+			test()
+
+		14.jquery如何完成ajax请求前，请求完成，请求失败，请求成功的处理
+
+		15.请表述一下http1.0与http1.1的区别
+			1、HTTP 1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理
+			2.HTTP 1.1增加host字段
+			3、100(Continue) Status(节约带宽)
+			HTTP/1.1加入了一个新的状态码100（Continue）。客户端事先发送一个只带头域的请求，如果服务器因为权限拒绝了请求，就回送响应码401（Unauthorized）；如果服务器接收此请求就回送响应码100，客户端就可以继续发送带实体的完整请求了。100 (Continue) 状态代码的使用，允许客户端在发request消息body之前先用request header试探一下server，看server要不要接收request body，再决定要不要发request body。
+			4、HTTP/1.1中引入了Chunked transfer-coding来解决上面这个问题，发送方将消息分割成若干个任意大小的数据块，每个数据块在发送时都会附上块的长度，最后用一个零长度的块作为消息结束的标志。这种方法允许发送方只缓冲消息的一个片段，避免缓冲整个消息带来的过载。
+			5、HTTP/1.1在1.0的基础上加入了一些cache的新特性，当缓存对象的Age超过Expire时变为stale对象，cache不需要直接抛弃stale对象，而是与源服务器进行重新激活（revalidation）。
+			
+		16.websocket的作用和用途
+			WebSocket协议是一种网络协议，它实现了浏览器与服务器的双向通讯的设计。 在本地移动应用中WebSockets也非常有用。通过使用WebSockets，你可以重复使用现有的工具建立网页，就像大多数移动应用程序重复使用他们API中的HTTP协议一样。
+
+		17.第21页面17题
+
+		18.css中优先级规则是什么
+			1、相同权值情况下，CSS样式的优先级总结来说，就是——就近原则（离被设置元素越近优先级别越高）：
+			内联样式表（标签内部）> 嵌入样式表（当前文件中）> 外部样式表（外部文件中）。
+			2、权值不同时，浏览器是根据权值来判断使用哪种css样式的，哪种样式权值高就使用哪种样式。
+			下面是权值的规则：
+			标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100
+
+		19.一个absolute的div如何让其位置相对于父div定位，而非body对象
+			用absolute定位时，要把其上一级的元素样式属性position设置为relative。
+
+		20.将一个行内元素转为快元素
+			 display:block;
+
+		21.p标签，strong,i,em标签的含义
+
+		22.如何将一段文本首行缩进两格
+			text-indent:2em
+
+		23.如何让一个宽度高度未知的元素垂直水平居中
+			position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    color: #fff;
+		    transform: translate(-50%, -50%);
+
+		24.如何清除浮动
+			1.给父级也加浮动（这种情况当父级margin:0 auto;时不居中）
+			2.给父级加display:inline-block;(同方法1，不居中。只有IE6,7居中)
+			3.给浮动元素父级加overflow:auto;
+			4.clear:both
+
+		25.什么是渐进增强和优雅降级
+			 渐进增强 progressive enhancement：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏
+				览器进行效果、交互等改进和追加功能达到更好的用户体验。
+		　　 优雅降级 graceful degradation：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+		　　 区别：优雅降级是从复杂的现状开始，并试图减少用户体验的供给，而渐进增强则是从一个非常基础的，能够起作		用的版本开始，并不断扩充，以适应未来环境的需要。降级（功能衰减）意味着往回看；而渐进增强则意味着
+				朝前看，同时保证其根基处于安全地带。
+
+		26.less是什么
+			LESS 是动态的样式表语言，通过简洁明了的语法定义，使编写 CSS 的工作变得非常简单
+
+		27.写出冒泡排序
+			void BubbleSort2(int a[], int n){
+		       	int j, k;
+		       	bool flag;
+		       	k = n;
+		       	flag = true;
+		       	while (flag){
+		            flag = false;
+		            for (j = 1; j < k; j++)
+	                    if (a[j - 1] > a[j]){
+                            Swap(a[j - 1], a[j]);
+                            flag = true;
+	                     }
+		            k--;
+		       	}
+			}
+
+		28.写出希尔排序  希尔排序，也称递减增量排序算法
+			#include <stdio.h>
+			int main()
+			{
+			     const int n = 5;
+			     int i, j, temp; 
+			     int gap = 0;
+			     int a[] = {5, 4, 3, 2, 1}; 
+			     while (gap<=n)
+			     {
+			          gap = gap * 3 + 1;
+			     } 
+			     while (gap > 0) 
+			     {
+			         for ( i = gap; i < n; i++ )
+			         {
+			             j = i - gap;
+			             temp = a[i];             
+			             while (( j >= 0 ) && ( a[j] > temp ))
+			             {
+			                 a[j + gap] = a[j];
+			                 j = j - gap;
+			             }
+			             a[j + gap] = temp;
+			         }
+			         gap = ( gap - 1 ) / 3;
+			     }    
+			 }
+
+		29.第22页面，19题
+
+		30.什么叫闭包
+			闭包是指有权限访问另一个函数作用域的变量的函数，创建闭包的常见方式就是在一个函数内部创建另一个函数，就是我们说的内部函数
+		
+		31.第24页两道选择题
+
+		32.如何进行字符串和json格式的互换
+			//使用json中的parser方法转换；
+			//把json中的stringify对象转换成字符串
+
+		33.实现trim函数去除字符串前后空格
+
+		34.实例化一个对象的时候new操作符都做了什么
+
+		35.简单阐述一下跨域的解决方法
+			（1）通过jsonp跨域：在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的
+			（2）通过修改document.domain来跨子域；浏览器都有一个同源策略
+			（3）使用window.name来进行跨域
+
+		36.让你制定开发规范你会从哪几方面考虑
+
+		37.常见的浏览器兼容性问题，以及对应的解决方案
+			（1）浏览器兼容问题一：不同浏览器的标签默认的外补丁和内补丁不同
+				 解决方案：CSS里    *{margin:0;padding:0;}
+			（2）浏览器兼容问题二：块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大
+				 解决方案：在float的标签样式控制中加入 display:inline;将其转化为行内属性
+			（3）浏览器兼容问题三：设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度
+				 解决方案：给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
+		38.如何实现元素居中
+			1. 让元素水平居中，使用 text-align: center;
+			2.绝对定位实现水平垂直居中，使用 position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto;
+			3.margin: 0 auto;
+
+		39.if(!("a" in window)){
+			  var a=1;
+		   }
+		   alert(a)//undefined
+
+		40.var a=1;
+			b=function a(x){
+				x&&a(--x)
+			}
+			alert(a)//1
+
+		41.b继承a的方法
+			function A(name){
+			    this.name = name;
+			    this.sayHello = function(){alert(this.name+” say Hello!”);};
+			}
+			function B(name,id){
+			    this.temp = A;
+			    this.temp(name);        //相当于new A();
+			    delete this.temp;       
+			     this.id = id;   
+			    this.checkId = function(ID){alert(this.id==ID)};
+			}
+
+		42.写一个获取非行间样式的函数
+			//获取非行间css样式
+			function getStyle(obj,attr){    //获取非行间样式，obj是对象，attr是值
+			    if(obj.currentStyle){   //针对ie获取非行间样式
+			        return obj.currentStyle[attr];
+			    }else{
+			        return getComputedStyle(obj,false)[attr];   //针对非ie
+			    };
+			};
+
+		43.为一DOM元素绑定事件的方法
+   		<script>
+   		
+   		</script>
+   </body>】
+   </html>

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面试题练习一</title>
+</head>
+<body>
+	1.position中relative,absoulte,fixed的定位原点是什么
+		(1).fixed是根据窗口为原点进行偏移定位
+		(2).relative相对定位相对的是它原本在文档流中的位置而进行的偏移
+		(3).absoulte相对于 static 定位以外的第一个父元素进行定位
+
+	2.行内元素有哪些，快级元素有哪些
+		块级元素：div  , p  , form,   ul,  li ,  ol, dl,    form,   address,  fieldset,  hr, menu,  table
+   		行内元素：span,   strong,   em,  br,  img ,  input,  label,  select,  textarea,  cite, 
+
+   	3.请用css创建一个三角形
+   		#triangle-up {
+		    width: 0;
+		    height: 0;
+		    border-left: 50px solid transparent;
+		    border-right: 50px solid transparent;
+		    border-bottom: 100px solid red;
+		}
+
+	4.inline元素之间有看不见的空白间隔是什么原因造成的?有什么解决办法
+		(1).空格是由inline-block标签之间换 行产生的
+		(2).去掉html标签中的空格和回车；利用负margin解决（不推荐，具体负margin多少取决于字体的大小）;
+			设置父元素font-size:0，子元素重新设置自己的font-size
+
+	5.请描述你曾经使用过的css预处理器的优缺点
+		(1).SASS，Compass，Stylus，LESS
+		(2).CSS预处理器用一种专门的编程语言，进行Web页面样式设计，然后再编译成正常的CSS文件，以供项目使用,可以让你的CSS更加简洁、适应性更强、可读性更佳，更易于代码的维护等诸多好处。
+			缺点：简单来说CSS预处理器语言较CSS玩法变得更高级了，但同时降低了自己对最终代码的控制力。更致命的是提高了门槛，首先是上手门槛，其次是维护门槛，再来是团队整体水平和规范的门槛。这也造成了初学学习成本的昂贵。
+
+	6.至少三中减少页面加载时间的方法
+		1、减少http请求（合并文件、合并图片）
+
+		2、优化图片文件，减小其尺寸，特别是缩略图，一定要按尺寸生成缩略图然后调用，不要在网页中用resize方法实现
+
+		3、图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方）
+
+		4、 压缩JavaScript、CSS代码：一般js、css文件中存在大量的空格、换行、注释，这些利于阅读，如果能够压缩掉，将会很有利于网络传输。这个压缩比率还是比较高的，一般都有百分五十左右。这个代码压缩对于网页的加载还是很有用的。
+
+		5、 服务器启用gzip压缩功能：将要传输的文件压缩后传输到客户端再解压，在网络传输 数据量会大幅减小。在服务器上的Apache、Nginx可直接启用，也可用代码直接设置传输文件头，增加gzip的设置，也可从 负载均衡设备直接设置。不过需要留意的是，这个设置会略微增加服务器的负担。服务器性能不是很好的网站，要慎重考虑。
+
+		6.标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。 当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。）
+
+		7、网址后面加上“/”:对服务器而言，不加斜杠服务器会多一次判断的过程，加斜杠就会直接返回网站设置的存放在网站根目录下的默认页面。
+
+	7.下面语句的返回值 "i'm a lasagna bog".split("").reverse().join("")
+		gob angasal a m'i、、split() 方法用于把一个字符串分割成字符串数组；颠倒数组中元素的顺序；join() 方法用于把数组中的所有元素放入一个字符串。
+
+	8.call和apply的区别是
+		call方法:
+		语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]]) 
+		定义：调用一个对象的一个方法，以另一个对象替换当前对象。
+		说明：
+		call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。 
+		如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+
+		apply方法：
+		语法：apply([thisObj[,argArray]]) 
+		定义：应用某一对象的一个方法，用另一个对象替换当前对象。 
+		说明：
+		如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。 
+		如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数
+		call, apply作用就是借用别人的方法来调用,就像调用自己的一样.
+		它们的不同之处：
+		apply：最多只能有两个参数——新this对象和一个数组 argArray。如果给该方法传递多个参数，则把参数都写进这个数组里面，当然，即使只有一个参数，也要写进数组里面。如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+		call：则是直接的参数列表，主要用在js对象各方法互相调用的时候，使当前this实例指针保持一致,或在特殊情况下需要改变this指针。如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+		注释：
+		更简单地说，apply和call功能一样，只是传入的参数列表形式不同：如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])
+
+	9.请谈谈你都使用过那些JavaScript模块或MVVM框架
+
+	10.你怎么看AMDvs.CommonJS
+		CMD推崇依赖就近，可以把依赖写进你的代码中的任意一行,,而AMD是依赖前置的，换句话说，在解析和执行当前模块之前，模块作者必须指明当前模块所依赖的模块
+
+	11.如何实现一个移动端tap事件，请简述思路
+		//自定义tap
+		$(document).on("touchstart", function(e) {
+		    if(!$(e.target).hasClass("disable")) $(e.target).data("isMoved", 0);
+		});
+		$(document).on("touchmove", function(e) {
+		    if(!$(e.target).hasClass("disable")) $(e.target).data("isMoved", 1);
+		});
+		$(document).on("touchend", function(e) {
+		    if(!$(e.target).hasClass("disable") && $(e.target).data("isMoved") == 0) $(e.target).trigger("tap");
+		});
+		实现原理
+		基于touchstart、touchmove、touchend这三个事件，通过事件委托的方式来实现tap事件。
+		e.target是事件源的触发节点，$(e.target)是该节点的jQuery封装对象。
+		第一步：监听touchstart事件，事件触发后通过jQuery的data方法设置该对象的isMoved状态为0。
+		第二步：监听touchmove事件，事件触发后通过jQuery的data方法设置该对象的isMoved状态为1。
+		第三步：监听touchend事件，事件触发后判断该对象是否touchend过，没有则触发tap事件。
+
+	12.前端有哪几种存储方式，简述各自特点
+		1.本地存储localstorage
+		存储方式：以键值对(Key-Value)的方式存储，永久存储，永不失效，除非手动删除。
+		常用的API：getItem //取记录；；setIten//设置记录；；removeItem//移除记录；；key//取key所对应的值；；clear//清除记录
+		2.本地存储sessionstorage
+		HTML5 的本地存储 API 中的 localStorage 与 sessionStorage 在使用方法上是相同的，区别在于 sessionStorage 在使用方法上是相同的，区别在于关闭页面后即被清空，而 localStorage 则会一直保存。
+		3.离线缓存（application cache）本地缓存应用所需的文件
+
+	13.千进符
+		function toThousands(num) {
+		    var result = '', counter = 0;
+		    num = (num || 0).toString();
+		    for (var i = num.length - 1; i >= 0; i--) {
+		        counter++;
+		        result = num.charAt(i) + result;//charAt()方法返回指定索引位置的char值
+		        if (!(counter % 3) && i != 0) { result = ',' + result; }
+		    }
+		    return result;
+		}
+		console.log(toThousands(1239914567))
+		新数组（result）的开头。每插入一个元素，counter就计一次数（加1），当counter为3的倍数时，就插入一个逗号，
+
+	14.简述常见的http状态码
+		200 OK  一切正常，对GET和POST请求的应答文档跟在后面
+		301 Moved Permanently  客户请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL。
+		302 Found   类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
+		304 Not Modified   客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓冲的文档还可以继续使用。
+		307 Temporary Redirect    和302（Found）相同。如果是307应答，则浏览器只能跟随对GET请求的重定向。
+		400 Bad Request  请求出现语法错误。
+		401 Unauthorized    客户试图未经授权访问受密码保护的页面。应答中会包含一个WWW-Authenticate头，浏览器据此显示用户名字/密码对话框，然后在填写合适的Authorization头后再次发出请求。
+		403 Forbidden  资源不可用。
+		404 Not Found   无法找到指定位置的资源
+		410 Gone   所请求的文档已经不再可用，而且服务器不知道应该重定向到哪一个地址。它和404的不同在于，返回407表示文档永久地离开了指定的位置，而404表示由于未知的原因文档不可用。
+		500 Internal Server Error   服务器遇到了意料不到的情况，不能完成客户的请求
+		501 Not Implemented  服务器不支持实现请求所需要的功能。例如，客户发出了一个服务器不支持的PUT请求
+
+	15.什么是事件代理？他的实现原理是什么？它可以用来解决什么问题
+
+	16.使用promises而非回调callback的优缺点是什么
+
+	17. var a=1;
+		var foo=function(){
+			console.log(a)
+			var a=2;
+		}
+		foo()
+		//undefined
+	
+	20.面试题5
+
+	21.  <div id="test">
+			<a href="url/a.html">a</a>
+			<a href="url/b.html">b</a>
+			<a href="url/c.html">c</a>
+			<a href="url/d.html">d</a>
+		</div>
+		点谁出现谁
+
+	22.面试题6--四
+
+	23.vue2中，如何动态改变元素的class
+		 v-bind:class 支持数据变量，当变量值改变时，将同时更新class。v-bind:class指令的值限定为绑定表达式
+
+	24.npm install --save与nom install --save-dev的区别
+		(一个放在package.json 的dependencies , 一个放在devDependencies里面)
+		npm install --save:
+		会把msbuild包安装到node_modules目录中
+		会在package.json的dependencies属性下添加msbuild
+		之后运行npm install命令时，会自动安装msbuild到node_modules目录中
+		之后运行npm install --production或者注明NODE_ENV变量值为production时，会自动安装msbuild到node_modules目录中
+
+		npm install --save-dev:
+		会把msbuild包安装到node_modules目录中
+		会在package.json的devDependencies属性下添加msbuild
+		之后运行npm install命令时，会自动安装msbuild到node_modules目录中
+		之后运行npm install --production或者注明NODE_ENV变量值为production时，不会自动安装msbuild到node_modules目录中
+
+	25.用原生js实现升序排序，一个数组[a1,a2,a3...ai...am],有这样的规律，a1到ai依次增大，ai到am依次减小
+
+	29.输出今天的日期，以YYYY-MM-DD的方式
+		 function outputDate(){  
+            var arrDate = [];  
+            var nowDate = new Date();  
+            var year = nowDate.getFullYear(),//获取年，返回2015  
+            var month = nowDate.getMonth() + 1;//返回月，0是1月  
+                month = month<10 ? '0'+month : month;  
+            var day = nowDate.getDate();//返回日，  
+                day = day<10 ? '0'+day : day;  
+            console.log(year+'-'+month + '-' +day);//或者利用下面的数组方法  
+            
+           arrDate.push(year);  
+           arrDate.push(month);  
+           arrDate.push(day);  
+           arrDate = arrDate.join('-');  
+           console.log(arrDate);
+        }  
+    	outputDate();
+
+    30.foo=foo||bar这行代码什么意思
+    	foo和bar应该都是bool型变量，||是表示 或的意思，只要foo或者bar有一个为真，那么这个表达式的值就为真，并把它赋给foo
+	<script>
+		28.var arr=[3,6,2,4,1,5]
+			倒序，，降序
+			var arr2=arr.reverse()
+			alert(arr2)
+			var arr2=arr.sort().reverse()
+			alert(arr2)
+
+		27.
+		var arr=["this","is","baidu","compones"]转换为alert出 this is baidu compones
+			var arr=["this","is","baidu","compones"]
+			var str=arr.join(" ")
+			alert(str)
+		26.
+		var a=new Object();
+		a.value=1;
+		b=a;
+		b.value=2;
+		alert(a.value)--2
+
+		21.window.onload = function(){
+		    var obj_lis = document.getElementById("test").getElementsByTagName("a");
+		    for(i=0;i<obj_lis.length;i++){
+		        obj_lis[i].onclick = function(){
+		            alert(this.innerHTML);
+		        }
+		    }
+		}
+
+		18. console.log(1)
+			setTimeout(function(){
+				console.log(2)
+			},0)
+			console.log(3)
+			1,3,2
+
+		19.var asy=function(len){
+			var i;
+			for(var i=0; i<len; i+=1){
+				setTimeout(function(){
+					console.log(i)
+				},0)
+			}
+		}
+		asy(3)
+		3个3
+	</script>
+</body>
+</html>

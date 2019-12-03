@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr=[1,5,8,2,8,6,8,1,8,21,5,5,5,92];
+		var abb=arr.join("");
+		//console.log(typeof abb)  ==>string
+		var acc="";
+		var len=abb.length%3;
+		acc=abb.substr(0,len);
+		if(len==0){
+			acc=abb.substr(0,3)
+		}
+		for(var i=len;i<abb.length;i+=3){
+			acc+=","+abb.substr(i,3);
+		}
+		document.write(acc);
+
+
+		/*var num="1234561231"  //1,234,561,231
+		var str="";
+		var len=num.length%3;
+		str=num.substr(0,len)  //"1"
+		if(len==0){
+			str=num.substr(0,3)
+		}
+		for(var i=len;i<num.length;i=i+3){
+			str+=","+num.substr(i,3);
+		}
+		console.log(str)*/
+	</script>
+</body>
+</html>

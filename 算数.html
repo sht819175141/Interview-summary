@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getTimes(str, s) {
+            var times = 0;
+            for (var i = 0; i < str.length; i++) {
+                if (str.charAt(i) === s) {
+                    //这里的p是形参，指的是"p"。
+                    times += 1;
+                }
+            }
+            return times;
+        }
+
+        console.log(getTimes("ksjkfdjksd", "p"));
+        /*var arr=["a","b","c","d"];
+        arr.splice(1,0,"f");
+        alert(arr);*/ //afbcd
+        /*var arr=[1,6996,7,2,4,2]
+        arr.splice(1,0,333);
+        alert(arr);*/
+        /*var sum=1;
+    for(var i=0;i<=10;i+=2){
+        sum+=1;
+        if(i%6==0){
+         continue;   ///当sum等于5时，跳出本次循环，进行for循环直到i=10；sum=7；
+
+        }
+    }
+
+
+  i=0;  sum=1+1=2;
+  i=2   sum=2+1=3
+  i=4   sum=3+1=4
+  i=6   sum=4+1=5;   //i等于6这一部不执行,sum继续执行
+  i=8   sum=5+1=6
+  i=10  sum=6+1=7
+    console.log(sum);*/
+        /*var str=["h","e","l","l","o"].join();
+        console.log(str) */ //h,e,l,l,o
+        //"a-b-c-d".split("-")["a","b","c","d"]：
+        /*onkeydown=function(){
+          alert(event.keyCode);
+        }*/
+        /*var arr=[];
+        for(var i=1;i<=10;i++){
+           var x=Math.floor(Math.random()*91+10);
+           arr+=x;
+        }
+        document.write(arr);*/
+        /*alert("123abc"-"123sfs")
+        alert(typeof ("123abc"-"123sfes"))*/
+    </script>
+</body>
+
+</html>

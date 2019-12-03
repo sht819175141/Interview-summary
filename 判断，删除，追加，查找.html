@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div class="c bg e"></div>
+	<script>
+	var div=document.getElementsByTagName('div');
+	//一、判断文件里是否含有某一样式的方法
+	function hasClass(elem,className){
+		var arr=elem.className.split(/\s+/);
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==className){
+				return i;
+				break;
+			}
+		}
+		return -1
+	}
+	//var div=document.getElementsByTagName('div');
+	//alert(hasClass(div[0],"e"))===>2
+
+	//二、删除文件里某一样式的方法
+	/*function removeClass(elem,className){	
+		var index=hasClass(elem,className);
+		if(index!=-1){
+			var arr=elem.className.split(/\s+/);
+			arr.splice(index,1);
+			elem.className=arr.join(' ')
+		}
+	}*/
+	/*removeClass(div[0],'e')
+  	console.log(div[0].className)*/
+	//console.log(removeClass(div[0],'e'));
+
+	//三、向文件里追加某一样式的方法,已有样式的话，就不再添加
+	/*function addClass(elem,className){
+		if(hasClass(elem,className)==-1){
+			var arr=elem.className.split(/\s+/);
+			arr.push(className);
+			elem.className=arr.join(" ");
+		}
+	}
+	console.log(addClass(div[0],'h'))
+	console.log(addClass(div[0],'bg4'))*/
+
+	//四、遍历所有的标签，然后className是否你要找的bg 有push数组
+	function getElementsByClassName(elem,className){
+		var arr=[];
+		for(var i=0;i<elem.length;i++){
+			if(hasClass(elem[i],className)!=-1){
+				arr.push(elem[i])
+			}
+		}
+		return arr
+	}
+	var divs=document.getElementsByTagName('*')
+	console.log(getElementsByClassName(divs,'bg'))
+	</script>
+</body>
+</html>

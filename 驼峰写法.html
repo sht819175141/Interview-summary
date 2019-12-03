@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var str = "we-are-family";
+		var arr = str.split("-");
+		var acc = "";
+		for (var i = 0; i < arr.length; i++) {
+			acc += arr[i][0].toUpperCase() + arr[i].slice(1);
+		}
+		alert(acc);
+
+		function getStyle(obj, attr) {
+			if (obj.currentStyle) { //IE
+				return obj.currentStyle[attr];
+			} else {
+				return getComputedStyle(obj, null)[attr];
+			}
+		}
+
+		//1)border-left-color 
+		var arr = "border-left-color"
+		var reg = /-\w/g;
+		arr.replace(reg, function (val) {
+			return val.substring(1).toUpperCase();
+		})
+	</script>
+</body>
+
+</html>

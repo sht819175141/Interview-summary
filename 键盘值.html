@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" value="" id="txt"/>
+	<script>
+	var txt=document.getElementById("txt")
+		txt.onkeyup=function(e){
+			var event=e || window.event
+			console.log(event.keyCode)
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body> 
+	2.描述一下cookies,sessionStorage和localStorage的区别
+		共同点：都是保存在浏览器端，且同源的。
+		区别：
+		（1）cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。
+		（2）存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage （3）虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
+		（4）数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。
+		（5）作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。
+		Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者。
+		Web Storage 的 api 接口使用更方便。
+
+	3.HTML5有哪些新增的表单元素
+		datalist：datalist 元素规定输入域的选项列表。列表是通过 datalist 内的 option 元素创建的。
+		keygen： 元素的作用是提供一种验证用户的可靠方法。
+		output：元素用于不同类型的输出，比如计算或脚本输出：
+
+	4.都用过那些css框架（写出几个框架中你使用过的类名）
+		（1）Blueprint是比较早的，基于静态css的框架。
+		（2）现在有两个主要的动态css语言，LESS和SASS，给css提供了变量，mixin，运算符等功能，让写出模块化的css框架成为可能。
+		（3）Bootstrap现在基本是欧美这里最流行的框架，基于LESS
+
+	5.前端开发有哪些优化问题
+		1. JavaScript 压缩和模块打包
+		2. 按需加载资源
+		3. 在使用 DOM 操作库时用上 array-ids
+		4. 缓存
+		5. 启用 HTTP/2
+		6. 应用性能分析
+		7. 使用负载均衡方案
+		8. 为了更快的启动时间考虑一下同构
+		9. 使用索引加速数据库查询
+		10. 使用更快的转译方案
+		11. 避免或最小化 JavaScript 和 CSS 的使用而阻塞渲染
+		12. 用于未来的一个建议：使用 service workers + 流
+		13. 图片编码优化
+
+	北京源后智影科技有限公司
+		1.Doctype分严格模式和混杂模式，如何触发这两种模式，区分它们有何意义
+			用于声明文档使用那种规范（html/Xhtml）一般为 严格 过度 基于框架的html文档 
+			加入XMl声明可触发，解析方式更改为IE5.5 拥有IE5.5的bug 
+		
+		2.你做的页面在那些浏览器测试过？这些浏览器的内核分别是什么
+			IE内核浏览器：360，傲游，搜狗，世界之窗，腾讯TT
+			非IE内核浏览器：firefox opera safari chrome
+
+		3.什么是语义化的html
+			基本上都是围绕着几个主要的标签，像标题（H1~H6）、列表（li）、强调（strong em）等等>
+　　	根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码的同时让浏				览器的爬虫和机器很好地解析。
+		4.清除浮动的几种方式，各自优缺点
+			（1）clear:both。此方法的弊端在于增加了无意义的结构元素
+			（2）overflow:hidden可能会对页面表现带来影响
+			（3）使用after伪对象清除浮动 该方法只适用于非IE浏览器，从content属性是必须的，但其值可以为空height为0
+			（4）父级div定义height
+
+		5.列举三种强势转换类型和两种隐式转换类型
+			强制（parseInt,parseFloat,number）隐式（+ -）
+
+		6.对WEB标准以及W3C的理解与认识
+		  标签闭合、标签小写、不乱嵌套、提高搜索机器人搜索几率、使用外链css和js脚本、结构行为表现的分离、文件下载与页面速度更快、内容能被更多的用户所访问、内容能被更广泛的设备所访问、更少的代码和组件，容易维护、改版方便，不需要变动页面内容、提供打印版本而不需要复制内容、提高网站易用性；
+
+		7.IE和标准下有哪些兼容性的写法
+			Var ev = ev || window.event
+			document.documentElement.clientWidth || document.body.clientWidth
+			Var target = ev.srcElement||ev.target
+
+		8.ajax请求的时候post和get的区别
+			1.使用Get请求时,参数在URL中显示,而使用Post方式,则不会显示出来
+			2.使用Get请求发送数据量小,Post请求发送数据量大
+
+		9.写一个获取非行间样式的函数
+			function getStyle(obj,attr){    //获取非行间样式，obj是对象，attr是值
+			    if(obj.currentStyle){   //针对ie获取非行间样式
+			        return obj.currentStyle[attr];
+			    }else{
+			        return getComputedStyle(obj,false)[attr];   //针对非ie
+			    };
+			};
+
+		10.如何阻止事件冒泡和默认事件
+			function stopBubble(e) { 
+			//如果提供了事件对象，则这是一个非IE浏览器 
+			if ( e && e.stopPropagation ) 
+			    //因此它支持W3C的stopPropagation()方法 
+			    e.stopPropagation(); 
+			else
+			    //否则，我们需要使用IE的方式来取消事件冒泡 
+			    window.event.cancelBubble = true; 
+			}
+
+			//阻止浏览器的默认行为 
+			function stopDefault( e ) { 
+			    //阻止默认浏览器动作(W3C) 
+			    if ( e && e.preventDefault ) 
+			        e.preventDefault(); 
+			    //IE中阻止函数器默认动作的方式 
+			    else
+			        window.event.returnValue = false; 
+			    return false; 
+			}
+
+		11.解释jsonp的原理，以及为什么不是真正的ajax
+			jsonp使用script标签实现跨域访问、可在url中指定回调函数、获取json数据并在指定的回调函数中执行
+			json是一种轻量级的数据交换格式，他在ajax的作用是用于返回一个json类型的数据，而ajax是一个整体的技术，不能相提并论的
+
+		12."=="和"==="的区别
+			”==”与”===”是不同的,一个是判断值是否相等,一个是判断值及类型是否完全相等
+
+		13.	javascript的同源策略
+			脚本只能读取和所属文档来源相同的窗口和文档的属性。
+			如果两个文档在协议、主机以及载入文档的URL端口这三点中有一点不同，就认为他们不同源。
+			同源策略固然在安全性上有了很大提高，但这种做法属于“宁可错杀三千，不可放过一个”。如果一个多域名站点需要在不同的子域之间共享属性，同源策略就会变得很烦人了。
+
+		14.编写一个数组去重的方法
+
+		15.编写一个数组冒泡排序的方法
+
+		16.如何居中一个浮动元素
+			1、可以在外层加一个div，外层的div采用margin居中，里层的div设置宽度为100%。
+			2、设置当前div的宽度，然后设置margin-left:50%; position:relative; left:-250px;其中的left是宽度的一半。
+
+		17.如果让你制作一个访问量很高的大型网站，你会如何管理所有的css文件
+			 把所有的CSS文件都放入一个样式表中,通过把所有的脚本放到一个文件中来减少HTTP请求的方法。 js文件也采用同样的方法。 
+			把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和background-position属性来显示图片的不同部分。
+
+		18.一个页面从输入URL到页面加载显示完成，这个过程都发生了什么
+			DNS解析；TCP连接；发送HTTP请求；服务器处理请求并返回HTTP报文；浏览器解析渲染页面；连接结束
+
+		19.第17页第七题
+
+		20.封装cookie的添加，删除，查询方法
+			CookieUtil=｛
+			    addCookie:function(key,value,options){
+			        var str=key+"="+escape(value);
+			        if(options.expires){
+			           var curr=new Date();   //options.expires的单位是小时
+			           curr.setTime(curr.getTime()+options.expires*3600*1000);
+			           options.expires=curr.toGMTString();
+			        }
+			        for(var k in options){   //有可能指定了cookie的path，cookie的domain
+			           str+=";"+k+"="+options[k];
+			        }
+			        document.cookie=str;
+			    },
+			    queryCookie:function(key){
+			      var cookies=document.cookie;
+			     //获得浏览器端存储的cookie,格式是key=value;key=value;key=value
+			      cookies+=";";
+			      var start=cookies.indexOf(key);
+			      if(start<=-1){ return null; }  //说明不存在该cookie
+			      var end=cookies.indexOf(";",start);
+			      var value=cookies.slice(start+key.length+1,end);
+			      return unescape(value);
+			    },
+			    deleteCookie:function(key){
+			      var value=CookieUtil.queryCookie(key);
+			      if(value===null){return false;}
+			      CookieUtil.addCookie(key,value,{expires:0});//把过期时间设置为0，浏览器会马上自动帮我们删除cookie
+			    }
+			｝
+
+		21.如何处理高并发或列举高并发的业务逻辑
+			高并发就是同一个时间点，同时请求同一个东西，比如商品限时抢购，多人同时去抢
+			1、HTML静态化  2、图片服务器分离  3、数据库集群和库表散列  4、缓存
+
+		22.display:none和visibility:hidden的区别是
+			占位不占位
+			none表示完全没有, 当前的位置会被后面的元素补上来 hidden仅仅是隐藏, 但是他的位置会保留
+
+		23.html5的新特性
+			用于绘画的 canvas 元素
+			用于媒介回放的 video 和 audio 元素
+			对本地离线存储的更好的支持
+			新的特殊内容元素，比如 article、footer、header、nav、section
+			新的表单控件，比如 calendar、date、time、email、url、search
+
+		24.html5允许我们自己控制哪些文件需要缓存，那些不需要
+
+		25.多个页面之间如何进行通信
+			使用cookie，使用web worker，使用localeStorage和sessionStorage
+
+		26.浏览器的垃圾回收机制
+		垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于不再有用的变量打上标记，以备将来收回其占用的内存，内存泄露和浏览器实现的垃圾回收机制息息相关， 而浏览器实现标识无用变量的策略主要有下两个方法：
+		（1）引用计数（2）标记清除（mark-and-sweep）
+
+		27.javascript的值类型和引用类型
+			（1）值类型：数值、布尔值、null、undefined。
+			（2）引用类型：对象、数组、函数。
+
+		28.介绍一下css的盒模型
+		IE盒子和W3c盒子两种： 
+  		W3C盒子由margin，border，padding，content 
+  		IE盒子由margin，padding，padding，content构成，但是由于content包括padding，border，即为margin+content
+
+  		29.css3有哪些新特性
+  			新增各种CSS选择器  （: not(.input)：所有 class 不是“input”的节点）
+	        圆角           （border-radius:8px）
+	        多列布局        （multi-column layout）
+	        阴影和反射        （Shadow\Reflect）
+	        文字特效      （text-shadow、）
+	        文字渲染      （Text-decoration）
+	        线性渐变      （gradient）
+	        旋转          （transform）
+	        增加了旋转,缩放,定位,倾斜,动画，多背景
+
+	    30.json的了解
+	    	json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构。
+			1、对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,...}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。
+			2、数组：数组在js中是中括号“[]”括起来的内容，数据结构为 ["java","javascript","vb",...]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。
+			经过对象、数组2种结构就可以组合成复杂的数据结构了。
+
+		31.线程与进程的理解？谈谈你对多线程的理解
+			 先简单说说线程与进程的概念：
+			 （1）进程是指一个内存中运行的应用程序，比如在Windows系统中，一个运行的exe就是一个进程。
+			 （2）线程是指进程中的一个执行流程。
+			区别：
+			一个程序至少有一个进程，而一个进程至少有一个线程。一个应用程序可以同时启动多个进程。例如对于IE浏览器程序，每打开一个IE浏览器窗口，就启动了一个新的进程。而线程则是指进程中的一个执行流程，一个进程可以有多个线程，每个线程分别执行不同的任务，当进程内的多个线程同时运行时，这种运行方式就被称为并发运行。
+			另外，线程与进程还有一个非常重要的区别：每个进程在执行过程中都拥有独立的内存单元，而同一个进程中的多个线程则共享内存，从而极大地提高了程序的运行效率。
+一个
+			二、对多线程并发的理解
+			多线程并发只是表面和感觉上的并发，并不是实质上的并发。一个线程要运行，它必须占有CPU，而我们目前用的计算机大多都是单CPU的，所以一次最多只能有一个线程获取CPU并运行。
+			多线程的实质是“最大限度地利用CPU资源”，当某一个线程的处理不需要占用CPU而只需要和I/O等资源打交道时，让其他线程有机会获得CPU资源。这有点类似于“统筹方法”，例如让你打扫房子和烧水，要在最短的时间内做好这两件事，你一定会想到先把水烧上，然后在等水烧开的空闲时间中去打扫房子，而不是先打扫好了再去烧水，也不是先烧好了再去打扫，这个例子里面，你是那个唯一的CPU，而烧水和打扫就是两个线程。
+			虽然CPU只有一个，但是它在多个线程之间频繁切换，当切换的频率高到一定程度时，我们就感觉所有的线程在同时运行，于是感觉这多个线程是并发的。因此，并发并不是真的指多个线程同时运行，它仅仅只是形容一种现象。就好像说有些人是“铁人”一样，仅仅只是用于形容某个人不怕苦不怕累，像个“铁人”。
+
+		32.简述一下handlerbars的对模块的基本处理流程，如何编译的，如何缓存的
+	<script>
+		10.
+		function OuterFoo(){
+			this.Name="Outer Name";
+			function InnerFoo(){
+				var Name="Inner Name";
+				alert(Name+','+this.Name)
+			}
+			return InnerFoo
+		}
+		OuterFoo()()
+		//Inner Name,Outer Name
+
+		9.
+		console.log(2+1+"23"+3+5)//32335
+
+		8.
+		console.log("lenght" in Date) //false
+
+		7.
+		var o1={};
+		var o2=Object.create(o1)
+		var o3=Object.create(o2)
+		console.log(o2.PrototypeOf(o3))//o2.PrototypeOf is not a function
+		console.log(o1.PrototypeOf(o3))//o1.PrototypeOf is not a function
+
+		6.
+		var O=function(p){
+			this.p=p;
+			this.m="hi word"
+		}
+		O.prototype.m=function(){
+			return this.p
+		}
+		var o=new O("hello world")
+		console.log(o.p);//hello world
+		console.log(o.m())//o.m is not a function
+
+		1.for(var i=0,j=0; i<10,j<6; i++,j++){
+			console.log(k=i+j)
+		}
+		0,2,4,6,8,10
+	</script>
+</body>
+</html>

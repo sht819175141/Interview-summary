@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="uls">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        //（1）
+        var a = 1;
+        if (!(b in window)) {
+            var b = 1;
+            b++;
+        } else {
+            a += 1;
+        }
+        console.log(a) //2
+        console.log(b) //underfined
+
+        var a = 1;
+        if (!(a in window)) {
+            var b = 1;
+            b++;
+        } else {
+            a += 1;
+        }
+        console.log(a) //1
+        console.log(b) //2
+
+        var a = 1;
+        if (a in window) {
+            var b = 1;
+            b++;
+        } else {
+            a += 1;
+        }
+        console.log(a) //2
+        console.log(b) //2
+
+
+        //（2）
+        var arr = [2, 65, 3, 8, 32, 8, 151, 748];
+        var j = 0;
+        for (var i = 0, len = arr.length; i < len; i++) {
+            if (j < arr[i]) {
+                j = arr[i];
+            }
+        }
+        document.write(j + "<br />");
+
+
+        //（3）
+        var abb = ["sdd", "saf", "ad", "addr"];
+        var a = abb[0],
+            b = abb[1],
+            c = abb[2],
+            d = abb[3];
+        var acc = [d, c, b, a];
+        document.write(acc);
+
+
+        //（4）
+        var aee = "abcdacacs",
+            num = 0;
+        for (var i = 0, len = aee.length; i < len; i++) {
+            if (aee[i] == "a") {
+                num += 1;
+            }
+        }
+        document.write(num);
+
+
+        //（5）
+        var num = 0;
+        for (var i = 1; i <= 10000; i++) {
+            if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0) {
+                num += 1;
+                document.write(i + " ");
+                if (num % 6 == 0) {
+                    document.write("<br />");
+                }
+            }
+        }
+
+
+        //（6）
+        var c = "as,f,sd,ass,d"
+        c.toUpperCase();
+        alert(c.toUpperCase());
+
+
+        //（7）
+        var c = "A,SD,A,DAD,AD";
+        c.toLowerCase();
+        alert(c.toLowerCase());
+
+
+        //（8）
+        var a = "index.html";
+        var b = a.indexOf(".");
+        a.substr(b);
+        alert(a.substr(b))
+
+
+        //（9）
+        function one(name) {
+            var b = name.indexOf(".")
+            return document.write(name.substr(b));
+        }
+        one("js.js");
+
+
+        //（10）
+        var arr = "asf,asp,awer,wer,fvcb";
+        alert(arr.indexOf("awer", 9)); //-1
+        alert(arr.slice(1, -3)); //截取到的内容：sf,asp,awer,wer,f
+        alert(Math.ceil(Math.random() * 100));
+
+
+        //（11）：回文的判断
+        var str = "abcba";
+        var brr = str.split(",");
+        var crr = (brr.reverse()).join();
+        document.write(str == crr);
+
+
+        //（12）
+        var test = (function (i) {
+            return function () {
+                alert(i * 2)
+            }
+        }(2));
+        test(); //4
+
+
+        //（13）
+        var x = 5;
+        var obj = {
+            x: 3,
+            doit: function () {
+                alert('结果是：' + this.x);
+            }
+        };
+        var fn = new obj(); //Uncaught TypeError: obj is not a constructor
+        fn['doit']();
+
+
+        //（14）
+        (function () {
+            var val = 1;
+            var json = {
+                val: 10,
+                dbl: function () {
+                    console.log(this.val + "1") //===>101
+                    val *= 2
+                    console.log(val) //===>2
+                }
+            };
+            json.dbl();
+            alert(json.val + val) //===>12
+            console.log(val) //===>2
+            console.log(json.val) //===>10
+        }());
+
+
+        //(15)    
+        function C1(name) {
+            if (name) this.name = name; //===>"Tom"
+        }
+
+        function C2(name) {
+            this.name = name; //===>underfined
+        }
+
+        function C3(name) {
+            this.name = name || "john"; //===>john
+        }
+        C1.prototype.name = "Tom";
+        C1.prototype.name = "Tom";
+        C1.prototype.name = "Tom";
+        alert((new C1().name) + (new C2().name) + (new C3().name))
+
+
+        //(16)
+        var num = 5;
+
+        function fn() {
+            var num = 6
+        }
+        fn()
+        console.log(num) //===>5
+
+
+        //(17)
+        function setName(obj) {
+            obj.name = "Nicholas";
+            obj = new Object();
+            obj.name = "Greg";
+        }
+        var person = new Object();
+        setName(person);
+        console.log(person.name); //===>"Nicholas" 
+
+
+        //(18)
+        function test2() {
+            var t = 0;
+            for (var i = 0; i < 5; i++) {
+                t += i;
+                console.log(i); //0,1,2,3,4
+            }
+            alert(t); //===>10
+            alert(i); //===>5
+        }
+        test2();
+
+
+        //(19)
+        var s = 'hello';
+        for (var i = 0; i < s.length; i++) {
+            console.log(s[i]); //===>h e l l o
+
+        }
+        console.log(i); //===>5 
+
+
+        (20)
+        var scope = "global";
+
+        function foo() {
+            console.log(scope);
+        }
+        foo(); //====>global
+
+
+        //(21)
+        var name = 'zhar';
+
+        function say() {
+            console.log(this.name); //zhar
+        }
+        say();
+
+
+        //(22)
+        var name = 'zhar';
+        setTimeout(function () {
+            console.log(this.name); //zhar
+        }, 0);
+
+
+        //(23)
+        var name = 'tom';
+        var obj = {
+            name: "zhar",
+            say: function () {
+                console.log(name); //tom
+                console.log(this.name); //tom
+            }
+        }
+        var fun = obj.say;
+        fun(); //fun定义在全局环境下，即window.fun() 再次说明了this的指向是由运行时的执行环境来决定的  
+
+
+        //(24)
+        var name = "ad";
+        var obj = {
+            name: "zhar",
+            say: function () {
+                console.log(name); //ad
+                console.log(this.name); //zhar
+                return function () {
+                    console.log(name);
+                    console.log(this.name);
+                }
+            }
+        }
+        obj.say();
+
+
+        //(25)
+        var name = 'tom';
+        var obj = {
+            name: "zhar",
+            say: function () {
+                console.log(name) //tom
+                console.log(this.name) //zhar
+                return function () {
+                    console.log(name) //tom
+                    console.log(this.name); //tom 
+                }
+            }
+        }
+        obj.say()();
+
+
+        //(26)
+        var a = 10;
+
+        function fn() {
+            var a = 20;
+            return function b() {
+                console.log(a); //===>20
+            };
+        }
+        var g = fn();
+        g();
+
+
+        //(27)
+        var a = 10;
+
+        function fn() {
+            var a = 20;
+            console.log(a); //20
+            console.log(this.a); //10
+            return function b() {
+                console.log(a); //20
+                console.log(this.a); //10
+            };
+        }
+        var g = fn();
+        g();
+
+
+        //(28)
+        var a = 10;
+
+        function fn() {
+            var a = 20;
+            console.log(a); // 20
+            console.log(this.a); // 10
+            return function b() {
+                console.log(a); // 空
+                console.log(this.a); // 空
+            };
+        }
+        fn();
+
+
+        //(29)
+        function fun() {};
+        console.log(fun instanceof
+            function) //Unexpected token )
+        console.log(fun instanceof object) //object is not defined
+        console.log(typeof fun) //function 
+
+
+        //(30)
+        var aLi = document.getElementsByTagName('li');
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function () {
+                alert(this.innerText); //弹出当前点击的内容
+                alert(i); //始终弹出li的长度，即，i的最后一位  ===》55555
+            }
+        }
+
+        for (var i = 0; i < aLi.length; i++) {
+            (function (i) {
+                aLi[i].onclick = function () {
+                    alert(this.innerText); //弹出当前点击的内容
+                    alert(i); //弹出当前i，既下标
+                };
+            })(i)
+        }
+
+
+        //(31)
+        for (var i = 1; i <= 5; i++) {
+            setTimeout(function () {
+                alert(i) //===>6 6 6 6 6 6 弹出会比打印多个6
+                console.log(i) //===>6 6 6 6 6    
+            }, 1000);
+        }
+
+
+        //(32)
+        (function () {
+            setTimeout(function () {
+                for (var i = 0; i < 5; i++) {
+                    console.log(i) // 0 1 2 3 4
+                }
+            }, 1000)
+        })();
+
+
+        //(33)
+        for (var i = 1; i <= 3; i++) {
+            setTimeout(function () {
+                alert(i) //===>4 4 4 4   弹出会比打印多个4
+                console.log(i) //===>4 4 4
+            }, 1000)
+        }
+
+
+        //(34)
+        (function () {
+            for (var i = 1; i <= 3; i++) {
+                setTimeout(function () {
+                    alert(i) //===>4 4 4 4  弹出会比打印多个4
+                    console.log(i) // ===>4 4 4  
+                }, 1000)
+            }
+        })() // 4 4 4
+
+
+        //(35)
+        (function () {
+            for (var i = 0; i < 5; i++) {
+                setTimeout(function () {
+                    alert(i) // 5 5 5 5 5 5  弹出会比打印多个5
+                    console.log(i) // 5 5 5 5 5
+                }, 1000)
+            }
+        })()
+
+
+        //(36)
+        for (var i = 1; i <= 3; i++) {
+            console.log(i) //1 2 3
+        }
+
+
+        //(37)
+        for (var i = 1; i <= 3; i++) {
+
+        }
+        alert(i) //===>4
+        console.log(i) //===>4
+
+
+        //(38)
+        for (let i = 1; i <= 3; i++) {
+
+        }
+        alert(i) //===>i is not defined
+        console.log(i) //===>4
+
+        var str = "i'm a lasagna hog";
+        var val = str.split("").reverse().join("");
+        console.log(val) //goh angasal a m'i
+
+
+        //(39)
+        var a = 21;
+        var fn = function () {
+            console.log(a) //underfined
+            var a = 22;
+            var x = 23;
+            var y = x = 3;
+        }
+        fn();
+        console.log(typeof x) //underfined
+        console.log(typeof y) //underfined 
+        console.log(undefined == undefined) //函数外获取不到函数内的 y x，所以：true
+
+
+        //（40）
+        var arr = [1, 2, 3];
+        var brr = [4, 5, 6];
+        var crr = arr.concat(brr);
+        console.log(crr) //===>[1,2,3,4,5,6]
+        delete crr[1]
+        console.log(crr) //===>[1, empty, 3, 4, 5, 6]
+        crr.splice(1, 1) //删除
+        console.log(crr) //===>[1, 3, 4, 5, 6]
+
+
+        // （41）
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                return function () {
+                    return this.name;
+                };
+            }
+        };
+        alert(object.getNameFunc()); //===>The Window
+
+
+        // （42）
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                alert(name) //===>The Window
+                return function () {
+                    return this.name;
+                };
+            }
+        };
+        alert(object.getNameFunc());
+
+
+        //(43)
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                alert(this.name) //===>My Object
+                alert(name) //===>The Window
+                return function () {
+                    alert(this) //===>window
+                    return this.name;
+                };
+            }
+        };
+        alert(object.getNameFunc()()); //===>The Window
+
+
+        //（44）
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                var that = this;
+                return function () {
+                    return that.name;
+                };
+            }
+        };
+        alert(object.getNameFunc()()); //===>My Object
+
+
+        //(45)
+        var x = 3;
+        var obj = {
+            x: 3,
+            doit: function () {
+                alert('method is called' + this.x)
+            }
+        };
+        obj.doit(); //method is called 3
+        obj['doit'](); //method is called 3
+
+
+        //(46)
+        var x = 4;
+        var obj = {
+            x: 3,
+            doit: function () {
+                return function () {
+                    alert('method is called' + this.x)
+                };
+            }
+        };
+        obj.doit();
+        obj['doit']()(); //method is called 4
+
+
+        //(47)
+        setTimeout(function () {
+            console.log('1')
+        })
+        const promise = new Promise(function (resolve, reject) {
+            console.log('2')
+            resolve('3');
+        });
+        promise.then(function (value) {
+            console.log(value);
+        });
+        //  2 3 1
+
+        //(48)
+        var obj = {
+            a: 1,
+            b: 2,
+            test1: function () {
+                this.a = 3
+                return function () {
+                    console.log(this.b)
+                }
+            },
+            test2: function () {
+                this.b = 4
+                return function () {
+                    console.log(this.a)
+                }
+            },
+            test3: function () {
+                console.log(this.a)
+            }
+        }
+        obj.test1()();
+        obj.test2()();
+        obj.test3();
+
+        // undefined  undefined  3
+
+        //(49)
+        var obj = {
+            a: 1,
+            b: 2,
+            test1: function () {
+                return function () {
+                    this.a = 3
+                    console.log(this.b)
+                }
+            },
+            test2: function () {
+
+                return function () {
+                    this.b = 4
+                    console.log(this.a)
+                }
+            },
+            test3: function () {
+                console.log(this.a)
+            }
+        }
+        obj.test1()();
+        obj.test2()();
+        obj.test3();
+
+        // undefined  3  1
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var str = "13546464123"
+		//手机号 11位数字  1 34578 9位置无限制
+		var reg = /^1[34578]\d{9}$/
+		console.log(reg.test(str))
+
+		//电话号码的：
+		//7到8位数字82157034         5056776
+		//010-82157034     0311-5056776      011- 0311-  3-4位的数字 - 
+		//+\(86\)010-82157034   +(86)0311-5056776  
+		var ss = "35416546"
+		var reg = /((\+\(86\))?\d{3,4}-)?\d{7,8}/
+		console.log(reg.test(ss))
+
+		//IP地址：
+		//172.28.1.3
+		//32.4.124.223
+		//1.255.23.12
+		//1到3位的数字.1到3位的数字.1到3位的数字.1到3位的数字
+		var arr = "172.52.64.425"
+		var reg = /^(\d{1,3}\.){3}\d{1,3}$/
+		console.log(reg.test(arr))
+
+		//邮政编码  6
+		var reg = /\d{6}/
+		/*[a-zA-Z0-9]
+		\d 数字
+		\w  数字，字母，下划线
+		\s  空格
+		*   0次到多次
+		+   1次到多次
+		？  0次到1次
+		www.baidu.com
+		baidu.com
+		http://www.baidu.com*/
+		var acc = "baidu.com"
+		var reg = /^\w\.com$/
+		console.log(reg.test(acc))
+
+		//小括号分组，中括号匹配，大括号重复
+	</script>
+</body>
+</ht

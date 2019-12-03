@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function show(){	
+		var str="abaasdffggghhjjkkgfddsssss3444343";	
+		var acc="";
+		var cishu;
+		var k=0;
+		var x;
+		for(var i=0;i<str.length;i++){
+			acc=str.split(str.charAt(i));
+			console.log(typeof acc)
+			cishu=acc.length-1;
+			if(cishu>k){
+				k=cishu;
+				x=str.charAt(i)+"次数最多"+k+"次";	
+			}
+		}
+		alert(x);
+	}
+	show()
+	</script>
+</body>
+</html>
